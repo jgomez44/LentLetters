@@ -9,7 +9,7 @@ using System.Data;
 
 namespace LentLetters.Services
 {
-    public class AddressService
+    public class AddressService : IAddressService
     {
 
         public List<Address> GetAll()

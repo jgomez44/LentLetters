@@ -13,7 +13,14 @@ namespace LentLetters.Controllers
     [RoutePrefix("api/addresses")]
     public class AddressController : ApiController
     {
-        readonly AddressService addressService = new AddressService();
+        //readonly AddressService addressService = new AddressService();
+        readonly IAddressService addressService;
+
+        public AddressController(IAddressService addressService)
+        {
+            this.addressService = addressService;
+        }
+        //above gives you dependency injection
 
         [HttpGet, Route]
         public List<Address> GetAll()
