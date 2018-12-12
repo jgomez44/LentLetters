@@ -17,9 +17,9 @@ class Homepage extends Component {
     let person = this.state.addresses.map(address => {
       return (
         <div key={address.id}>
-          <h1>
+          <h3>
             Name: &nbsp; {address.firstName} &nbsp; {address.lastName}
-          </h1>
+          </h3>
           <p>
             Mailing address: &nbsp;
             {address.street}
@@ -28,6 +28,13 @@ class Homepage extends Component {
             {address.city}, {address.state} {address.zip}
           </p>
           <p>{address.sendDate}</p>
+
+          <button className="btn btn-info" type="button">
+            Edit
+          </button>
+          <button className="btn btn-danger" type="button">
+            Delete
+          </button>
         </div>
       );
     });
