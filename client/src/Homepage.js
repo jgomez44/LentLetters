@@ -8,13 +8,26 @@ class Homepage extends Component {
     addresses: []
   };
   componentDidMount = () => {
-    address_getAll().then(addresses => this.setState({ addresses }));
+    address_getAll().then(addresses =>
+      this.setState({ addresses }, this.printPeopleInfo)
+    );
+  };
+
+  printPeopleInfo = () => {
     let person = this.state.addresses.map(address => {
       return (
-        <div>
-          <h1>{address.firstName}</h1>
-          <h1>{address.lastName}</h1>
-          <p />
+        <div key={address.id}>
+          <h1>
+            Name: &nbsp; {address.firstName} &nbsp; {address.lastName}
+          </h1>
+          <p>
+            Mailing address: &nbsp;
+            {address.street}
+          </p>
+          <p>
+            {address.city}, {address.state} {address.zip}
+          </p>
+          <p>{address.sendDate}</p>
         </div>
       );
     });
@@ -22,7 +35,7 @@ class Homepage extends Component {
   };
 
   render() {
-    return <div>{this.state.addresses}</div>;
+    return <div>{this.printPeopleInfo()}</div>;
   }
 }
 
