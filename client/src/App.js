@@ -13,8 +13,7 @@ import PersonInfo from "./PersonInfo";
 class App extends Component {
   componentDidMount = () => {};
   render() {
-    return (
-      <>
+    return <>
         <BrowserRouter>
           <>
             <NavLink to="/homepage">Home &nbsp;</NavLink>
@@ -22,12 +21,12 @@ class App extends Component {
             <Switch>
               <Route exact path="/homepage" component={Homepage} />
               <Route exact path="/create" component={PersonInfo} />
+              <Route exact path="/edit/" component={PersonInfo} />
               <Redirect to="/homepage" component={Homepage} />
             </Switch>
           </>
         </BrowserRouter>
-      </>
-    );
+      </>;
   }
 }
 
