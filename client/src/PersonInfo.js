@@ -32,6 +32,15 @@ class PersonInfo extends Component {
       .catch(error => console.error("submit new person error===", error));
   };
 
+  handleInputChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+
+  handleSelectDate = () => {};
+
+  handleChangeDate = () => {};
+
   handleRedirect = () => {};
   render() {
     return (
@@ -41,45 +50,74 @@ class PersonInfo extends Component {
             <Col md={6}>
               <FormGroup>
                 <Label>First Name:</Label>
-                <Input type="text" />
+                <Input
+                  type="text"
+                  name="firstName"
+                  value={this.state.firstName}
+                  onChange={this.handleInputChange}
+                />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
                 <Label>Last Name:</Label>
-                <Input type="text" />
+                <Input
+                  type="text"
+                  name="lastName"
+                  value={this.state.lastName}
+                  onChange={this.handleInputChange}
+                />
               </FormGroup>
             </Col>
           </Row>
 
           <FormGroup>
             <Label>Street:</Label>
-            <Input type="text" />
-          </FormGroup>
-
-          <FormGroup>
-            <Label>Suite/Apartment:</Label>
-            <Input type="text" />
+            <Input
+              type="text"
+              name="street"
+              value={this.state.street}
+              onChange={this.handleInputChange}
+            />
           </FormGroup>
 
           <FormGroup>
             <Label>City:</Label>
-            <Input type="text" />
+            <Input
+              type="text"
+              name="city"
+              value={this.state.city}
+              onChange={this.handleInputChange}
+            />
           </FormGroup>
 
           <FormGroup>
             <Label>State:</Label>
-            <Input type="text" />
+            <Input
+              type="text"
+              name="state"
+              value={this.state.state}
+              onChange={this.handleInputChange}
+            />
           </FormGroup>
 
           <FormGroup>
             <Label>Zip:</Label>
-            <Input type="number" />
+            <Input
+              type="number"
+              name="zip"
+              value={this.state.zip}
+              onChange={this.handleInputChange}
+            />
           </FormGroup>
 
           <FormGroup>
             <Label>Send Date:</Label>
-            <DatePicker />
+            <DatePicker
+              selected={this.state.date}
+              onSelect={this.handleSelectDate}
+              onChange={this.handleChangeDate}
+            />
           </FormGroup>
           <Button
             onClick={this.handleAddNewPerson}
