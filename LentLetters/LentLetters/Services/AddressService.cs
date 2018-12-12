@@ -33,7 +33,7 @@ namespace LentLetters.Services
                         address.Street = (string)reader["Street"];
                         address.City = (string)reader["City"];
                         address.State = (string)reader["State"];
-                        address.Zip = (int)reader["Zip"];
+                        address.Zip = (string)reader["Zip"];
                         address.SendDate = (DateTime)reader["SendDate"];
                         address.DateCreated = (DateTime)reader["DateCreated"];
                         address.DateModified = (DateTime)reader["DateModified"];

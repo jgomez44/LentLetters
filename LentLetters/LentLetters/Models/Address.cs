@@ -13,7 +13,7 @@ namespace LentLetters.Models
         public string Street { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public int Zip { get; set; }
+        public string Zip { get; set; }
         public DateTime SendDate { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }

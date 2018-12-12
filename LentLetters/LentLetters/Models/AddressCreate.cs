@@ -23,8 +23,8 @@ namespace LentLetters.Models
         [MaxLength(100), MinLength(1)]
         public string State { get; set; }
 
-        [MaxLength(100), MinLength(1)]
-        public int? Zip { get; set; }
+        [MaxLength(5), MinLength(5)]
+        public string Zip { get; set; }
 
         public DateTime? SendDate { get; set; }
         
