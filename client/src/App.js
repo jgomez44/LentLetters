@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, NavLink, BrowserRouter, Redirect } from "react-router-dom";
+import {
+  Route,
+  NavLink,
+  BrowserRouter,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import Homepage from "./Homepage";
 import PersonInfo from "./PersonInfo";
 
@@ -11,11 +17,13 @@ class App extends Component {
       <>
         <BrowserRouter>
           <>
-            <NavLink to="/homepage">Home</NavLink>
-            <NavLink to="/create">Add Address</NavLink>
-
-            <Route exact path="/homepage" component={Homepage} />
-            <Route exact path="/create" component={PersonInfo} />
+            <NavLink to="/homepage">Home &nbsp;</NavLink>
+            <NavLink to="/create">Add Address &nbsp;</NavLink>
+            <Switch>
+              <Route exact path="/homepage" component={Homepage} />
+              <Route exact path="/create" component={PersonInfo} />
+              <Redirect to="/homepage" component={Homepage} />
+            </Switch>
           </>
         </BrowserRouter>
       </>
