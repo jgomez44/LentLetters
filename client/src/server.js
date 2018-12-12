@@ -7,6 +7,10 @@ export function address_getAll() {
     .catch(error => console.error("error===", error));
 }
 
+export function addNewPerson(personInfo) {
+  return axios.post("/api/addresses", personInfo);
+}
+
 // export async function address_getAll_async() {
 //   const resp = await axios.get("/api/addresses");
 //   return resp.data;
