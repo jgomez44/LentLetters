@@ -32,7 +32,7 @@ class PersonInfo extends Component {
       sendDate
     };
     addNewPerson(personInfo)
-      .then(this.handleRedirect())
+      .then(this.handleRedirect)
       .catch(error => console.error("submit new person error===", error));
   };
 

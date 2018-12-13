@@ -13,9 +13,7 @@ class Homepage extends Component {
   };
 
   handleDeletePersonInfo = id => {
-    deletePersonInfo(id)
-      .then(address_getAll().then(this.printPeopleInfo()))
-      .catch(error => console.error("delete person error===", error));
+    deletePersonInfo(id).then(this.updateList);
   };
 
   updateList = () => {
