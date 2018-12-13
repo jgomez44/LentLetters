@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { address_getAll } from "./server";
+import { address_getAll, deletePersonInfo } from "./server";
 import "./App.css";
 import moment from "moment";
 
@@ -12,6 +12,12 @@ class Homepage extends Component {
     address_getAll().then(addresses =>
       this.setState({ addresses }, this.printPeopleInfo)
     );
+  };
+
+  handleDeletePersonInfo = id => {
+    deletePersonInfo(id)
+      .then(this.printPeopleInfo())
+      .catch(error => console.error("delete person error===", error));
   };
 
   printPeopleInfo = () => {
@@ -36,7 +42,7 @@ class Homepage extends Component {
           <button
             className="btn btn-danger"
             type="button"
-            onClick={() => this.handleDeletePerson(address.id)}
+            onClick={() => this.handleDeletePersonInfo(address.id)}
           >
             Delete
           </button>
