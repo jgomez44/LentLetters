@@ -13,7 +13,7 @@ class Homepage extends Component {
   };
 
   handleDeletePersonInfo = id => {
-    deletePersonInfo(id).then(this.updateList);
+    deletePersonInfo(id, this.updateList);
   };
 
   updateList = () => {
