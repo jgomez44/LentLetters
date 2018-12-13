@@ -49,7 +49,9 @@ class PersonInfo extends Component {
     e.preventDefault();
   };
 
-  handleRedirect = () => {};
+  handleRedirect = () => {
+    this.props.history.push("/homepage");
+  };
   render() {
     return (
       <div>
