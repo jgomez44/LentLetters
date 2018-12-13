@@ -68,6 +68,18 @@ namespace LentLetters.Services
             }
         }
 
+        public void Delete(int id)
+        {
+            using (var con = GetConnection())
+            {
+                var cmd = con.CreateCommand();
+                cmd.CommandText = "Addresses_Delete";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
 
         SqlConnection GetConnection()
         {

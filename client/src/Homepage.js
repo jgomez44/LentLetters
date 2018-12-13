@@ -33,7 +33,11 @@ class Homepage extends Component {
           <button className="btn btn-info" type="button">
             Edit
           </button>
-          <button className="btn btn-danger" type="button">
+          <button
+            className="btn btn-danger"
+            type="button"
+            onClick={() => this.handleDeletePerson(address.id)}
+          >
             Delete
           </button>
         </div>

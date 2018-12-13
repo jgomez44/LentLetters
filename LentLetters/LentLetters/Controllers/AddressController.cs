@@ -31,16 +31,13 @@ namespace LentLetters.Controllers
         [HttpPost, Route]
         public int Create(AddressCreate model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            //};
-
-            //int newId = addressService.Create(model);
-
-            //return Request.CreateResponse(HttpStatusCode.OK, newId);
             return addressService.Create(model);
+        }
 
+        [HttpDelete, Route("{id:int}")]
+        public void Delete(int id)
+        {
+            addressService.Delete(id);
         }
     }
 }
