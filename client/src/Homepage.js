@@ -9,15 +9,19 @@ class Homepage extends Component {
     addresses: []
   };
   componentDidMount = () => {
-    address_getAll().then(addresses =>
-      this.setState({ addresses }, this.printPeopleInfo)
-    );
+    this.updateList();
   };
 
   handleDeletePersonInfo = id => {
     deletePersonInfo(id)
-      .then(this.printPeopleInfo())
+      .then(address_getAll().then(this.printPeopleInfo()))
       .catch(error => console.error("delete person error===", error));
+  };
+
+  updateList = () => {
+    address_getAll().then(addresses =>
+      this.setState({ addresses }, this.printPeopleInfo)
+    );
   };
 
   printPeopleInfo = () => {
