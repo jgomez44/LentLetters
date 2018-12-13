@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Form, FormGroup, Label, Button, Input, Row, Col } from "reactstrap";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { addNewPerson } from "./server";
-import Moment from "react-moment";
+import moment from "moment";
+// import Moment from "react-moment";
 
 class PersonInfo extends Component {
   state = {
@@ -18,7 +20,9 @@ class PersonInfo extends Component {
   componentDidMount = () => {};
 
   handleAddNewPerson = () => {
-    let {
+    let { firstName, lastName, street, city, state, zip } = this.state;
+    let sendDate = moment(this.state.sendDate);
+    const personInfo = {
       firstName,
       lastName,
       street,
@@ -26,8 +30,8 @@ class PersonInfo extends Component {
       state,
       zip,
       sendDate
-    } = this.state;
-    addNewPerson(firstName, lastName, street, city, state, zip, sendDate)
+    };
+    addNewPerson(personInfo)
       .then(this.handleRedirect())
       .catch(error => console.error("submit new person error===", error));
   };
@@ -37,9 +41,13 @@ class PersonInfo extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSelectDate = () => {};
+  handleChangeDate = sendDate => {
+    this.setState({ sendDate });
+  };
 
-  handleChangeDate = () => {};
+  onChangeRaw = e => {
+    e.preventDefault();
+  };
 
   handleRedirect = () => {};
   render() {
@@ -114,9 +122,11 @@ class PersonInfo extends Component {
           <FormGroup>
             <Label>Send Date:</Label>
             <DatePicker
-              selected={this.state.date}
-              onSelect={this.handleSelectDate}
+              name="sendDate"
+              selected={this.state.sendDate}
               onChange={this.handleChangeDate}
+              onChangeRaw={this.onChangeRaw}
+              // minDate={moment()}
             />
           </FormGroup>
           <Button
