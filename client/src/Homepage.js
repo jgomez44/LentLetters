@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { address_getAll } from "./server";
 import "./App.css";
+import moment from "moment";
 
 class Homepage extends Component {
   state = {
@@ -27,7 +28,7 @@ class Homepage extends Component {
           <p>
             {address.city}, {address.state} {address.zip}
           </p>
-          <p>{address.sendDate}</p>
+          <p>{moment(address.sendDate).format("L")}</p>
 
           <button className="btn btn-info" type="button">
             Edit
