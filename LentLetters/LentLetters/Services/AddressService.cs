@@ -46,6 +46,24 @@ namespace LentLetters.Services
             }
         }
 
+        public void Update(AddressUpdate req)
+        {
+            using (var con = GetConnection())
+            {
+                var cmd = con.CreateCommand();
+                cmd.CommandText = "Addresses_Update";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@FirstName", req.FirstName);
+                cmd.Parameters.AddWithValue("@LastName", req.LastName);
+                cmd.Parameters.AddWithValue("@Street", req.Street);
+                cmd.Parameters.AddWithValue("@City", req.City);
+                cmd.Parameters.AddWithValue("@Zip", req.Zip);
+                cmd.Parameters.AddWithValue("@SendDate", req.SendDate);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public int Create(AddressCreate req)
         {
             using (var con = GetConnection())
@@ -78,7 +96,7 @@ namespace LentLetters.Services
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.ExecuteNonQuery();
             }
-        }
+        } 
 
 
         SqlConnection GetConnection()

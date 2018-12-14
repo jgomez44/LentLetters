@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AddressCreate.cs" />
+    <Compile Include="Models\AddressUpdate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\IAddressService.cs" />
