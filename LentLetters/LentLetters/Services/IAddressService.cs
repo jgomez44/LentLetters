@@ -9,5 +9,6 @@ namespace LentLetters.Services
         List<Address> GetAll();
         void Delete(int id);
         Address SelectAddressById(int id);
+        void Update(AddressUpdate req);
     }
 }

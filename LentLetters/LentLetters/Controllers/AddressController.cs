@@ -44,6 +44,12 @@ namespace LentLetters.Controllers
         public Address SelectAddressById(int id)
         {
             return addressService.SelectAddressById(id);
-            }
+        }
+
+        [HttpPut, Route("{id:int}")]
+        public void Update(int id, AddressUpdate addressUpdate)
+        {
+            addressService.Update(addressUpdate);
+        }
     }
 }

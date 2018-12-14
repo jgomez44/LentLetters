@@ -53,10 +53,12 @@ namespace LentLetters.Services
                 var cmd = con.CreateCommand();
                 cmd.CommandText = "Addresses_Update";
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Id", req.Id);
                 cmd.Parameters.AddWithValue("@FirstName", req.FirstName);
                 cmd.Parameters.AddWithValue("@LastName", req.LastName);
                 cmd.Parameters.AddWithValue("@Street", req.Street);
                 cmd.Parameters.AddWithValue("@City", req.City);
+                cmd.Parameters.AddWithValue("@State", req.State);
                 cmd.Parameters.AddWithValue("@Zip", req.Zip);
                 cmd.Parameters.AddWithValue("@SendDate", req.SendDate);
 
@@ -116,6 +118,7 @@ namespace LentLetters.Services
                     }
 
                     var address = new Address();
+                    address.Id = (int)reader["Id"];
                     address.FirstName = (string)reader["FirstName"];
                     address.LastName = (string)reader["LastName"];
                     address.Street = (string)reader["Street"];
