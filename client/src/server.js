@@ -15,6 +15,14 @@ export function deletePersonInfo(id) {
   return axios.delete("/api/addresses/" + id);
 }
 
+export function selectPersonInfoById(id) {
+  return axios.get("/api/addresses/" + id);
+}
+
+export function updatePerson(id) {
+  return axios.put("/api/addresses/" + id);
+}
+
 // export async function address_getAll_async() {
 //   const resp = await axios.get("/api/addresses");
 //   return resp.data;

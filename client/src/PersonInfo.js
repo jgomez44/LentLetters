@@ -3,12 +3,13 @@ import { withRouter } from "react-router-dom";
 import { Form, FormGroup, Label, Button, Input, Row, Col } from "reactstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { addNewPerson } from "./server";
+import { addNewPerson, selectPersonInfoById } from "./server";
 import moment from "moment";
 // import Moment from "react-moment";
 
 class PersonInfo extends Component {
   state = {
+    personId: undefined,
     firstName: "",
     lastName: "",
     street: "",
@@ -17,7 +18,25 @@ class PersonInfo extends Component {
     zip: "",
     sendDate: new Date()
   };
-  componentDidMount = () => {};
+  componentDidMount = () => {
+    const { personId } = this.props.match.params;
+    if (personId) {
+      selectPersonInfoById(personId)
+        .then(
+          this.setState({
+            personId: id,
+            firstName,
+            lastName,
+            street,
+            city,
+            state,
+            zip,
+            sendDate
+          })
+        )
+        .catch(err => console.error("grabbing person info error===", err));
+    }
+  };
 
   handleAddNewPerson = () => {
     let { firstName, lastName, street, city, state, zip } = this.state;
