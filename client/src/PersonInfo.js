@@ -22,18 +22,20 @@ class PersonInfo extends Component {
     const { personId } = this.props.match.params;
     if (personId) {
       selectPersonInfoById(personId)
-        .then(
+        .then(resp => {
+          // let sendDate = moment(resp.sendDate);
+          console.log("select response===", resp);
           this.setState({
-            personId: id,
-            firstName,
-            lastName,
-            street,
-            city,
-            state,
-            zip,
-            sendDate
-          })
-        )
+            personId: resp.id,
+            firstName: resp.firstName,
+            lastName: resp.lastName,
+            street: resp.street,
+            city: resp.city,
+            state: resp.state,
+            zip: resp.zip
+            // sendDate
+          });
+        })
         .catch(err => console.error("grabbing person info error===", err));
     }
   };

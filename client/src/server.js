@@ -16,7 +16,9 @@ export function deletePersonInfo(id) {
 }
 
 export function selectPersonInfoById(id) {
-  return axios.get("/api/addresses/" + id);
+  return axios.get("/api/addresses/" + id).then(resp => {
+    return resp.data;
+  });
 }
 
 export function updatePerson(id) {

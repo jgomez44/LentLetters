@@ -24,7 +24,7 @@ class App extends Component {
               <Route exact path="/create" component={PersonInfo} />
               <Route
                 exact
-                path="/edit/:personId(\\d+)"
+                path={"/edit/:personId(\\d+)"}
                 component={PersonInfo}
               />
               <Redirect to="/homepage" component={Homepage} />

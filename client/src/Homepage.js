@@ -24,6 +24,10 @@ class Homepage extends Component {
     );
   };
 
+  handleEditPersonInfo = id => {
+    this.props.history.push("/edit/" + id);
+  };
+
   printPeopleInfo = () => {
     let person = this.state.addresses.map(address => {
       return (
@@ -40,7 +44,11 @@ class Homepage extends Component {
           </p>
           <p>{moment(address.sendDate).format("L")}</p>
 
-          <button className="btn btn-info" type="button">
+          <button
+            className="btn btn-info"
+            type="button"
+            onClick={() => this.handleEditPersonInfo(address.id)}
+          >
             Edit
           </button>
           <button
