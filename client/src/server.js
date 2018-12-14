@@ -21,8 +21,8 @@ export function selectPersonInfoById(id) {
   });
 }
 
-export function updatePerson(id) {
-  return axios.put("/api/addresses/" + id);
+export function updatePerson(id, personInfo) {
+  return axios.put("/api/addresses/" + id, personInfo);
 }
 
 // export async function address_getAll_async() {

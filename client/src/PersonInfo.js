@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { Form, FormGroup, Label, Button, Input, Row, Col } from "reactstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { addNewPerson, selectPersonInfoById } from "./server";
+import { addNewPerson, selectPersonInfoById, updatePerson } from "./server";
 import moment from "moment";
 // import Moment from "react-moment";
 
@@ -72,6 +72,32 @@ class PersonInfo extends Component {
 
   handleRedirect = () => {
     this.props.history.push("/homepage");
+  };
+
+  handleUpdatePerson = () => {
+    const {
+      personId,
+      city,
+      street,
+      state,
+      sendDate,
+      zip,
+      firstName,
+      lastName
+    } = this.state;
+    const personInfo = {
+      id: personId,
+      city,
+      street,
+      state,
+      firstName,
+      lastName,
+      zip,
+      sendDate
+    };
+    updatePerson(personId, personInfo)
+      .then(this.handleRedirect)
+      .catch(err => console.log("update error===", err));
   };
   render() {
     return (
@@ -153,11 +179,15 @@ class PersonInfo extends Component {
             />
           </FormGroup>
           <Button
-            onClick={this.handleAddNewPerson}
+            onClick={
+              this.state.personId
+                ? this.handleUpdatePerson
+                : this.handleAddNewPerson
+            }
             className="btn btn-success"
             type="button"
           >
-            Submit
+            {this.state.personId ? "Update" : "Create"}
           </Button>
         </Form>
       </div>
