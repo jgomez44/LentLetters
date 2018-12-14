@@ -39,5 +39,11 @@ namespace LentLetters.Controllers
         {
             addressService.Delete(id);
         }
+
+        [HttpGet, Route("{id:int}")]
+        public Address SelectAddressById(int id)
+        {
+            return addressService.SelectAddressById(id);
+            }
     }
 }

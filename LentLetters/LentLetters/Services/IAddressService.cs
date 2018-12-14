@@ -8,5 +8,6 @@ namespace LentLetters.Services
         int Create(AddressCreate req);
         List<Address> GetAll();
         void Delete(int id);
+        Address SelectAddressById(int id);
     }
 }

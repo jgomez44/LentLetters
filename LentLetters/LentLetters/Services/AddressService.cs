@@ -96,7 +96,40 @@ namespace LentLetters.Services
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.ExecuteNonQuery();
             }
-        } 
+        }
+
+        public Address SelectAddressById(int id)
+        {
+            using (var con = GetConnection())
+            {
+                var cmd = con.CreateCommand();
+                cmd.CommandText = "Addresses_SelectAddressById";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (!reader.Read())
+                    {
+                        return null;
+                    }
+
+                    var address = new Address();
+                    address.FirstName = (string)reader["FirstName"];
+                    address.LastName = (string)reader["LastName"];
+                    address.Street = (string)reader["Street"];
+                    address.City = (string)reader["City"];
+                    address.State = (string)reader["State"];
+                    address.Zip = (string)reader["Zip"];
+                    address.SendDate = (DateTime)reader["SendDate"];
+                    address.DateCreated = (DateTime)reader["DateCreated"];
+                    address.DateModified = (DateTime)reader["DateModified"];
+
+                    return address;
+                }
+            }
+        }
 
 
         SqlConnection GetConnection()
