@@ -13,7 +13,9 @@ class Homepage extends Component {
   };
 
   handleDeletePersonInfo = id => {
-    deletePersonInfo(id, this.updateList);
+    deletePersonInfo(id).then(response => {
+      this.updateList();
+    });
   };
 
   updateList = () => {
