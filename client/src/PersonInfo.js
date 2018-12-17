@@ -168,16 +168,29 @@ class PersonInfo extends Component {
             />
           </FormGroup>
 
-          <FormGroup>
+          {/* <FormGroup>
             <Label>Send Date:</Label>
             <DatePicker
               name="sendDate"
               selected={this.state.sendDate}
               onChange={this.handleChangeDate}
               onChangeRaw={this.onChangeRaw}
-              // minDate={moment()}
+              minDate={moment()}
+            />
+          </FormGroup> */}
+
+          <FormGroup>
+            <Label htmlFor="startDate">Start Date:</Label>
+            <DatePicker
+              onChangeRaw={this.onChangeRaw}
+              minDate={moment()}
+              name="sendDate"
+              selected={this.state.sendDate}
+              onChange={this.handleChangeDate}
+              required
             />
           </FormGroup>
+
           <Button
             onClick={
               this.state.personId
@@ -188,6 +201,14 @@ class PersonInfo extends Component {
             type="button"
           >
             {this.state.personId ? "Update" : "Create"}
+          </Button>
+
+          <Button
+            type="button"
+            className="btn btn-primary"
+            onClick={this.handleRedirect}
+          >
+            Return
           </Button>
         </Form>
       </div>

@@ -5,8 +5,14 @@ body {
 .personCard {
   background-color: rgba(204, 204, 204, 0.5);
   border-color: 1px solid black;
+  border-radius: 15px;
+  margin: 15px;  
 }
 
 Label {
   color: white;
+}
+
+form {
+  padding: 5%
 }
