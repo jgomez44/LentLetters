@@ -205,7 +205,7 @@ class PersonInfo extends Component {
 
           <Button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-info"
             onClick={this.handleRedirect}
           >
             Return

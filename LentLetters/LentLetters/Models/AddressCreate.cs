@@ -26,6 +26,8 @@ namespace LentLetters.Models
         [MaxLength(5), MinLength(5)]
         public string Zip { get; set; }
 
+        public string Letter { get; set; }
+
         public DateTime? SendDate { get; set; }
         
     }
