@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Homepage from "./Homepage";
 import PersonInfo from "./PersonInfo";
+import Game from "./Game";
 
 class App extends Component {
   componentDidMount = () => {};
@@ -19,6 +20,7 @@ class App extends Component {
           <>
             <NavLink to="/homepage">Home &nbsp;</NavLink>
             <NavLink to="/create">Add Address &nbsp;</NavLink>
+            <NavLink to="/game">Game</NavLink>
             <Switch>
               <Route exact path="/homepage" component={Homepage} />
               <Route exact path="/create" component={PersonInfo} />
@@ -27,6 +29,7 @@ class App extends Component {
                 path={"/edit/:personId(\\d+)"}
                 component={PersonInfo}
               />
+              <Route exact path={"/game"} component={Game} />
               <Redirect to="/homepage" component={Homepage} />
             </Switch>
           </>
