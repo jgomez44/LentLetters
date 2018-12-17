@@ -31,7 +31,17 @@ class Homepage extends Component {
   printPeopleInfo = () => {
     let person = this.state.addresses.map(address => {
       return (
-        <div key={address.id}>
+        <div
+          key={address.id}
+          style={{
+            // backgroundColor: "white",
+            display: "inline-block",
+            padding: "20px",
+            width: "710px",
+            position: "relative"
+          }}
+          className="personCard"
+        >
           <h3>
             Name: &nbsp; {address.firstName} &nbsp; {address.lastName}
           </h3>

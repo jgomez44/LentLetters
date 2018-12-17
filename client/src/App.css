@@ -30,3 +30,16 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-image: url("http://thesmashable.com/wp-content/uploads/2013/01/natural_hd_sunset_wallpapers_and_desktop_backgrounds-14.jpg")
+}
+
+.personCard {
+            background-color: rgba(204, 204, 204, 0.5);
+            border-color: 1px solid black;
+}
+
+Label {
+  color: white;
+}
