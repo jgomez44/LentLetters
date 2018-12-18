@@ -22,7 +22,13 @@ form {
 }
 
 embed {
-  margin: 0px, 15px, 0px, 15px
+  position: absolute;
+  right: 25%;
+  top: 15%
+}
+
+.bg-dark{
+  background-color: #8A2C70!important
 }
 
 /* .calendar{
