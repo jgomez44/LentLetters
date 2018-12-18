@@ -16,11 +16,13 @@ class PersonInfo extends Component {
     city: "",
     state: "",
     zip: "",
-    sendDate: new Date()
+    sendDate: new Date(),
+    loading: false
   };
   componentDidMount = () => {
     const { personId } = this.props.match.params;
     if (personId) {
+      this.setState({ loading: true });
       selectPersonInfoById(personId)
         .then(resp => {
           // let sendDate = moment(resp.sendDate);
@@ -32,8 +34,9 @@ class PersonInfo extends Component {
             street: resp.street,
             city: resp.city,
             state: resp.state,
-            zip: resp.zip
+            zip: resp.zip,
             // sendDate
+            loading: false
           });
         })
         .catch(err => console.error("grabbing person info error===", err));
@@ -102,73 +105,81 @@ class PersonInfo extends Component {
   render() {
     return (
       <div>
-        <Form>
-          <Row form>
-            <Col md={6}>
-              <FormGroup>
-                <Label>First Name:</Label>
-                <Input
-                  type="text"
-                  name="firstName"
-                  value={this.state.firstName}
-                  onChange={this.handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label>Last Name:</Label>
-                <Input
-                  type="text"
-                  name="lastName"
-                  value={this.state.lastName}
-                  onChange={this.handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-
-          <FormGroup>
-            <Label>Street:</Label>
-            <Input
-              type="text"
-              name="street"
-              value={this.state.street}
-              onChange={this.handleInputChange}
+        {this.state.loading ? (
+          <center>
+            <img
+              src="https://i.pinimg.com/originals/f6/f6/6f/f6f66f1885931de332ce6d8e1542aa41.jpg"
+              alt="Pray for patience"
             />
-          </FormGroup>
+          </center>
+        ) : (
+          <Form>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>First Name:</Label>
+                  <Input
+                    type="text"
+                    name="firstName"
+                    value={this.state.firstName}
+                    onChange={this.handleInputChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Last Name:</Label>
+                  <Input
+                    type="text"
+                    name="lastName"
+                    value={this.state.lastName}
+                    onChange={this.handleInputChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
 
-          <FormGroup>
-            <Label>City:</Label>
-            <Input
-              type="text"
-              name="city"
-              value={this.state.city}
-              onChange={this.handleInputChange}
-            />
-          </FormGroup>
+            <FormGroup>
+              <Label>Street:</Label>
+              <Input
+                type="text"
+                name="street"
+                value={this.state.street}
+                onChange={this.handleInputChange}
+              />
+            </FormGroup>
 
-          <FormGroup>
-            <Label>State:</Label>
-            <Input
-              type="text"
-              name="state"
-              value={this.state.state}
-              onChange={this.handleInputChange}
-            />
-          </FormGroup>
+            <FormGroup>
+              <Label>City:</Label>
+              <Input
+                type="text"
+                name="city"
+                value={this.state.city}
+                onChange={this.handleInputChange}
+              />
+            </FormGroup>
 
-          <FormGroup>
-            <Label>Zip:</Label>
-            <Input
-              type="number"
-              name="zip"
-              value={this.state.zip}
-              onChange={this.handleInputChange}
-            />
-          </FormGroup>
+            <FormGroup>
+              <Label>State:</Label>
+              <Input
+                type="text"
+                name="state"
+                value={this.state.state}
+                onChange={this.handleInputChange}
+              />
+            </FormGroup>
 
-          {/* <FormGroup>
+            <FormGroup>
+              <Label>Zip:</Label>
+              <Input
+                type="number"
+                name="zip"
+                value={this.state.zip}
+                onChange={this.handleInputChange}
+              />
+            </FormGroup>
+
+            {/* <FormGroup>
             <Label>Send Date:</Label>
             <DatePicker
               name="sendDate"
@@ -179,38 +190,39 @@ class PersonInfo extends Component {
             />
           </FormGroup> */}
 
-          <FormGroup>
-            <Label htmlFor="startDate">Start Date:</Label>
-            <DatePicker
-              onChangeRaw={this.onChangeRaw}
-              minDate={moment()}
-              name="sendDate"
-              selected={this.state.sendDate}
-              onChange={this.handleChangeDate}
-              required
-            />
-          </FormGroup>
+            <FormGroup>
+              <Label htmlFor="startDate">Start Date:</Label>
+              <DatePicker
+                onChangeRaw={this.onChangeRaw}
+                // minDate={moment({})}
+                name="sendDate"
+                selected={this.state.sendDate}
+                onChange={this.handleChangeDate}
+                required
+              />
+            </FormGroup>
 
-          <Button
-            onClick={
-              this.state.personId
-                ? this.handleUpdatePerson
-                : this.handleAddNewPerson
-            }
-            className="btn btn-success"
-            type="button"
-          >
-            {this.state.personId ? "Update" : "Create"}
-          </Button>
+            <Button
+              onClick={
+                this.state.personId
+                  ? this.handleUpdatePerson
+                  : this.handleAddNewPerson
+              }
+              className="btn btn-success"
+              type="button"
+            >
+              {this.state.personId ? "Update" : "Create"}
+            </Button>
 
-          <Button
-            type="button"
-            className="btn btn-info"
-            onClick={this.handleRedirect}
-          >
-            Return
-          </Button>
-        </Form>
+            <Button
+              type="button"
+              className="btn btn-info"
+              onClick={this.handleRedirect}
+            >
+              Return
+            </Button>
+          </Form>
+        )}
       </div>
     );
   }

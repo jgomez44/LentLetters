@@ -15,7 +15,6 @@ namespace LentLetters.Models
         public string State { get; set; }
         public string Zip { get; set; }
         public DateTime SendDate { get; set; }
-        public string Letter { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
     }

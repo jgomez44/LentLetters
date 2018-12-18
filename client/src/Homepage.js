@@ -31,17 +31,7 @@ class Homepage extends Component {
   printPeopleInfo = () => {
     let person = this.state.addresses.map(address => {
       return (
-        <div
-          key={address.id}
-          style={{
-            // backgroundColor: "white",
-            display: "inline-block",
-            padding: "20px",
-            width: "710px",
-            position: "relative"
-          }}
-          className="personCard"
-        >
+        <div key={address.id} className="personCard">
           <h3>
             Name: &nbsp; {address.firstName} &nbsp; {address.lastName}
           </h3>
@@ -75,7 +65,7 @@ class Homepage extends Component {
   };
 
   render() {
-    return <div>{this.printPeopleInfo()}</div>;
+    return <div className="calendar">{this.printPeopleInfo()}</div>;
   }
 }
 

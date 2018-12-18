@@ -38,7 +38,6 @@ namespace LentLetters.Services
                         address.SendDate = (DateTime)reader["SendDate"];
                         address.DateCreated = (DateTime)reader["DateCreated"];
                         address.DateModified = (DateTime)reader["DateModified"];
-                        address.Letter = (address.Letter == null) ? string.Empty : (string)reader["Letter"];
 
                         addresses.Add(address);
                     }
@@ -62,7 +61,6 @@ namespace LentLetters.Services
                 cmd.Parameters.AddWithValue("@City", req.City);
                 cmd.Parameters.AddWithValue("@State", req.State);
                 cmd.Parameters.AddWithValue("@Zip", req.Zip);
-                cmd.Parameters.AddWithValue("@Letter", req.Letter);
                 cmd.Parameters.AddWithValue("@SendDate", req.SendDate);
 
                 cmd.ExecuteNonQuery();
@@ -82,7 +80,6 @@ namespace LentLetters.Services
                 cmd.Parameters.AddWithValue("@City", req.City);
                 cmd.Parameters.AddWithValue("@State", req.State);
                 cmd.Parameters.AddWithValue("@Zip", req.Zip);
-                cmd.Parameters.AddWithValue("@Letter", req.Letter);
                 cmd.Parameters.AddWithValue("@SendDate", req.SendDate);
                 cmd.Parameters.Add("@Id", SqlDbType.Int).Direction = ParameterDirection.Output;
 
@@ -130,7 +127,6 @@ namespace LentLetters.Services
                     address.State = (string)reader["State"];
                     address.Zip = (string)reader["Zip"];
                     address.SendDate = (DateTime)reader["SendDate"];
-                    address.Letter = (string)reader["Letter"];
                     address.DateCreated = (DateTime)reader["DateCreated"];
                     address.DateModified = (DateTime)reader["DateModified"];
 
