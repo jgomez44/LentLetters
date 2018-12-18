@@ -5,7 +5,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addNewPerson, selectPersonInfoById, updatePerson } from "./server";
 import moment from "moment";
-// import Moment from "react-moment";
 
 class PersonInfo extends Component {
   state = {
@@ -25,7 +24,8 @@ class PersonInfo extends Component {
       this.setState({ loading: true });
       selectPersonInfoById(personId)
         .then(resp => {
-          // let sendDate = moment(resp.sendDate);
+          let sendDate = moment(resp.sendDate);
+          console.log("sendDate====", sendDate);
           console.log("select response===", resp);
           this.setState({
             personId: resp.id,
@@ -35,7 +35,7 @@ class PersonInfo extends Component {
             city: resp.city,
             state: resp.state,
             zip: resp.zip,
-            // sendDate
+            sendDate: resp.sendDate,
             loading: false
           });
         })
@@ -179,26 +179,18 @@ class PersonInfo extends Component {
               />
             </FormGroup>
 
-            {/* <FormGroup>
-            <Label>Send Date:</Label>
-            <DatePicker
-              name="sendDate"
-              selected={this.state.sendDate}
-              onChange={this.handleChangeDate}
-              onChangeRaw={this.onChangeRaw}
-              minDate={moment()}
-            />
-          </FormGroup> */}
-
             <FormGroup>
               <Label htmlFor="startDate">Start Date:</Label>
+              <br />
               <DatePicker
-                onChangeRaw={this.onChangeRaw}
-                // minDate={moment({})}
+                // onChangeRaw={this.onChangeRaw}
+                minDate={new Date()}
                 name="sendDate"
                 selected={this.state.sendDate}
                 onChange={this.handleChangeDate}
                 required
+                className="form-control"
+                // dateFormat="DD-MM-YYYY"
               />
             </FormGroup>
 
