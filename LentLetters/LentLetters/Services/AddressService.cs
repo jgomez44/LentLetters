@@ -49,6 +49,8 @@ namespace LentLetters.Services
                         address.SendDate = (DateTime)reader["SendDate"];
                         address.DateCreated = (DateTime)reader["DateCreated"];
                         address.DateModified = (DateTime)reader["DateModified"];
+                        address.GameTitle = games.QuerySelector(".game_title").TextContent.Trim();
+                        address.EmbedValue = games.QuerySelector("input").GetAttribute("value").Trim();
 
                         addresses.Add(address);
                     }
