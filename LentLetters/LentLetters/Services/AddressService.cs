@@ -36,6 +36,8 @@ namespace LentLetters.Services
 
                     var addresses = new List<Address>();
 
+                    var i = 0;
+
                     while (reader.Read())//loop will be called once for every row
                     {
                         var address = new Address();
@@ -49,9 +51,9 @@ namespace LentLetters.Services
                         address.SendDate = (DateTime)reader["SendDate"];
                         address.DateCreated = (DateTime)reader["DateCreated"];
                         address.DateModified = (DateTime)reader["DateModified"];
-                        address.GameTitle = games.QuerySelector(".game_title").TextContent.Trim();
-                        address.EmbedValue = games.QuerySelector("input").GetAttribute("value").Trim();
-
+                            address.GameTitle = games.QuerySelectorAll(".game_title")[i].TextContent.Trim();
+                            address.EmbedValue = games.QuerySelectorAll("input")[i].GetAttribute("value").Trim();
+                        i++;
                         addresses.Add(address);
                     }
 

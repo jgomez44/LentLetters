@@ -5,7 +5,7 @@ using System.Web;
 
 namespace LentLetters.Models
 {
-    public class Address
+    public class Address: Game
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -18,7 +18,7 @@ namespace LentLetters.Models
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
 
-        public string GameTitle { get; set; }
-        public string EmbedValue { get; set; }
+        //public string GameTitle { get; set; }
+        //public string EmbedValue { get; set; }
     }
 }
