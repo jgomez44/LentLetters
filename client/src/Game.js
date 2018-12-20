@@ -37,7 +37,7 @@ class Game extends React.Component {
       console.log("this.state.gameInfo[i]", this.state.gameInfo[i]);
       return (
         <div>
-          <embed {...this.state.gameInfo[i]} />
+          <embed src={this.state.src} />
         </div>
       );
     }
