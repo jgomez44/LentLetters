@@ -105,118 +105,109 @@ class PersonInfo extends Component {
   render() {
     return (
       <div>
-        {this.state.loading ? (
-          <center>
-            <img
-              src="https://i.pinimg.com/originals/f6/f6/6f/f6f66f1885931de332ce6d8e1542aa41.jpg"
-              alt="Pray for patience"
-            />
-          </center>
-        ) : (
-          <div>
-            <Form>
-              <Row form>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label>First Name:</Label>
-                    <Input
-                      type="text"
-                      name="firstName"
-                      value={this.state.firstName}
-                      onChange={this.handleInputChange}
-                    />
-                  </FormGroup>
-                </Col>
-                <Col md={6}>
-                  <FormGroup>
-                    <Label>Last Name:</Label>
-                    <Input
-                      type="text"
-                      name="lastName"
-                      value={this.state.lastName}
-                      onChange={this.handleInputChange}
-                    />
-                  </FormGroup>
-                </Col>
-              </Row>
+        <div>
+          <Form>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>First Name:</Label>
+                  <Input
+                    type="text"
+                    name="firstName"
+                    value={this.state.firstName}
+                    onChange={this.handleInputChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Last Name:</Label>
+                  <Input
+                    type="text"
+                    name="lastName"
+                    value={this.state.lastName}
+                    onChange={this.handleInputChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
 
-              <FormGroup>
-                <Label>Street:</Label>
-                <Input
-                  type="text"
-                  name="street"
-                  value={this.state.street}
-                  onChange={this.handleInputChange}
-                />
-              </FormGroup>
+            <FormGroup>
+              <Label>Street:</Label>
+              <Input
+                type="text"
+                name="street"
+                value={this.state.street}
+                onChange={this.handleInputChange}
+              />
+            </FormGroup>
 
-              <FormGroup>
-                <Label>City:</Label>
-                <Input
-                  type="text"
-                  name="city"
-                  value={this.state.city}
-                  onChange={this.handleInputChange}
-                />
-              </FormGroup>
+            <FormGroup>
+              <Label>City:</Label>
+              <Input
+                type="text"
+                name="city"
+                value={this.state.city}
+                onChange={this.handleInputChange}
+              />
+            </FormGroup>
 
-              <FormGroup>
-                <Label>State:</Label>
-                <Input
-                  type="text"
-                  name="state"
-                  value={this.state.state}
-                  onChange={this.handleInputChange}
-                />
-              </FormGroup>
+            <FormGroup>
+              <Label>State:</Label>
+              <Input
+                type="text"
+                name="state"
+                value={this.state.state}
+                onChange={this.handleInputChange}
+              />
+            </FormGroup>
 
-              <FormGroup>
-                <Label>Zip:</Label>
-                <Input
-                  type="number"
-                  name="zip"
-                  value={this.state.zip}
-                  onChange={this.handleInputChange}
-                />
-              </FormGroup>
+            <FormGroup>
+              <Label>Zip:</Label>
+              <Input
+                type="number"
+                name="zip"
+                value={this.state.zip}
+                onChange={this.handleInputChange}
+              />
+            </FormGroup>
 
-              <FormGroup>
-                <Label htmlFor="startDate">Start Date:</Label>
-                <br />
-                <DatePicker
-                  // onChangeRaw={this.onChangeRaw}
-                  minDate={new Date()}
-                  name="sendDate"
-                  selected={this.state.sendDate}
-                  onChange={this.handleChangeDate}
-                  required
-                  className="form-control"
-                  // dateFormat="DD-MM-YYYY"
-                />
-              </FormGroup>
+            <FormGroup>
+              <Label htmlFor="startDate">Start Date:</Label>
+              <br />
+              <DatePicker
+                // onChangeRaw={this.onChangeRaw}
+                minDate={new Date()}
+                name="sendDate"
+                selected={this.state.sendDate}
+                onChange={this.handleChangeDate}
+                required
+                className="form-control"
+                // dateFormat="DD-MM-YYYY"
+              />
+            </FormGroup>
 
-              <Button
-                onClick={
-                  this.state.personId
-                    ? this.handleUpdatePerson
-                    : this.handleAddNewPerson
-                }
-                className="btn btn-success"
-                type="button"
-              >
-                {this.state.personId ? "Update" : "Create"}
-              </Button>
+            <Button
+              onClick={
+                this.state.personId
+                  ? this.handleUpdatePerson
+                  : this.handleAddNewPerson
+              }
+              className="btn btn-success"
+              type="button"
+            >
+              {this.state.personId ? "Update" : "Create"}
+            </Button>
 
-              <Button
-                type="button"
-                className="btn btn-info"
-                onClick={this.handleRedirect}
-              >
-                Return
-              </Button>
-            </Form>
-          </div>
-        )}
+            <Button
+              type="button"
+              className="btn btn-info"
+              onClick={this.handleRedirect}
+            >
+              Return
+            </Button>
+          </Form>
+        </div>
       </div>
     );
   }
