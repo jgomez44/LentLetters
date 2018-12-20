@@ -19,6 +19,12 @@ class Game extends React.Component {
   createNewGameArray = () => {
     let gameInfo = this.state.allInfo.map(info => {
       console.log("embed value===", info.embedValue.substring(7).split(">")[0]);
+      let substring1 = info.embedValue.substring(7);
+      let substring2 = substring1.substring(
+        0,
+        info.embedValue.indexOf("flash")
+      );
+      console.log("embed try 2===", substring2);
       return info.embedValue.substring(7).split(">")[0];
     });
     this.setState({ gameInfo }, this.printGames);
@@ -28,6 +34,7 @@ class Game extends React.Component {
     console.log("game info===", this.state.gameInfo);
 
     for (let i = 0; i < this.state.gameInfo.length; i++) {
+      console.log("this.state.gameInfo[i]", this.state.gameInfo[i]);
       return (
         <div>
           <embed {...this.state.gameInfo[i]} />
