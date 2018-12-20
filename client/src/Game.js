@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { address_getAll } from "./server";
+import { getGames } from "./server";
 
 class Game extends React.Component {
   state = {
@@ -8,8 +8,11 @@ class Game extends React.Component {
   };
 
   componentDidMount = () => {
-    address_getAll()
-      .then(response => this.setState({ allInfo: response }))
+    getGames()
+      .then(response => {
+        console.log("games response===", response);
+        this.setState({ allInfo: response });
+      })
       .catch(error => console.error("game error===", error));
   };
 

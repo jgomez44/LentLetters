@@ -7,6 +7,13 @@ export function address_getAll() {
     .catch(error => console.error("error===", error));
 }
 
+export function getGames() {
+  return axios
+    .get("/api/addresses/games")
+    .then(resp => resp.data)
+    .catch(error => console.error("get games error===", error));
+}
+
 export function addNewPerson(personInfo) {
   return axios.post("/api/addresses", personInfo);
 }
