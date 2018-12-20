@@ -10,7 +10,6 @@ class Game extends React.Component {
   componentDidMount = () => {
     getGames()
       .then(response => {
-        console.log("games response===", response);
         this.setState({ allInfo: response });
       })
       .catch(error => console.error("game error===", error));

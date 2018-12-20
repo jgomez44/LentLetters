@@ -31,9 +31,3 @@ export function selectPersonInfoById(id) {
 export function updatePerson(id, personInfo) {
   return axios.put("/api/addresses/" + id, personInfo);
 }
-
-// export async function address_getAll_async() {
-//   const resp = await axios.get("/api/addresses");
-//   return resp.data;
-// }
-//make promise callback code read like normal code

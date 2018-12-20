@@ -106,9 +106,6 @@ class PersonInfo extends Component {
     return (
       <div>
         {this.state.loading ? (
-          // <center>
-          //   <div style={{ fontSize: "12em" }}>Loading...</div>
-          // </center>
           <center>
             <img
               src="https://i.pinimg.com/originals/f6/f6/6f/f6f66f1885931de332ce6d8e1542aa41.jpg"
@@ -187,14 +184,12 @@ class PersonInfo extends Component {
                 <Label htmlFor="startDate">Start Date:</Label>
                 <br />
                 <DatePicker
-                  // onChangeRaw={this.onChangeRaw}
                   minDate={new Date()}
                   name="sendDate"
                   selected={this.state.sendDate}
                   onChange={this.handleChangeDate}
                   required
                   className="form-control"
-                  // dateFormat="DD-MM-YYYY"
                 />
               </FormGroup>
 
