@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Data;
+using System.Net;
+using AngleSharp.Parser.Html;
 
 namespace LentLetters.Services
 {
@@ -20,9 +22,18 @@ namespace LentLetters.Services
                 cmd.CommandText = "Addresses_GetAll";//name of stored procedure
                 cmd.CommandType = CommandType.StoredProcedure;
 
+                var results = new List<Game>();
+
+                var webClient = new WebClient();
+                var html = webClient.DownloadString("https://www.kongregate.com/games_for_your_site");
+
+                var parser = new HtmlParser();
+                var document = parser.Parse(html);
+                var games = document.QuerySelector("table.sponsoredgames");
+
                 using (var reader = cmd.ExecuteReader())
                 {
-                    
+
                     var addresses = new List<Address>();
 
                     while (reader.Read())//loop will be called once for every row
