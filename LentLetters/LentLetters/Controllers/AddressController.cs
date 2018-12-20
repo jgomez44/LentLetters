@@ -28,6 +28,12 @@ namespace LentLetters.Controllers
             return addressService.GetAll();
         }
 
+        [HttpGet, Route("games")]
+        public List<Game> GetGames()
+        {
+            return addressService.GetGames();
+        }
+
         [HttpPost, Route]
         public int Create(AddressCreate model)
         {

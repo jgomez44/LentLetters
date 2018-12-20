@@ -13,6 +13,31 @@ namespace LentLetters.Services
 {
     public class AddressService : IAddressService
     {
+        public List<Game> GetGames()
+        {
+            using (var con = GetConnection())
+            {
+                var results = new List<Game>();
+
+                var webClient = new WebClient();
+                var html = webClient.DownloadString("https://www.kongregate.com/games_for_your_site");
+
+                var parser = new HtmlParser();
+                var document = parser.Parse(html);
+                var games = document.QuerySelector("table.sponsoredgames");
+                var rows = games.QuerySelectorAll("tr");
+
+                for (var i = 1; i < 9; i++)
+                {
+                    var game = new Game();
+                    game.GameTitle = rows[i].QuerySelector(".game_title").TextContent.Trim();
+                    game.EmbedValue = rows[i].QuerySelector("input").GetAttribute("value").Trim();
+
+                    results.Add(game);
+                }
+                return results;
+            }
+        }
 
         public List<Address> GetAll()
         {
@@ -38,7 +63,7 @@ namespace LentLetters.Services
 
                     var i = 0;
 
-                    while (reader.Read())//loop will be called once for every row
+                    while (reader.Read())
                     {
                         var address = new Address();
                         address.Id = (int)reader["Id"];

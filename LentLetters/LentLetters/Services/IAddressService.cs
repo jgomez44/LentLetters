@@ -10,5 +10,6 @@ namespace LentLetters.Services
         void Delete(int id);
         Address SelectAddressById(int id);
         void Update(AddressUpdate req);
+        List<Game> GetGames();
     }
 }
