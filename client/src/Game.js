@@ -17,12 +17,14 @@ class Game extends React.Component {
   };
 
   printGames = () => {
+    let i = 0;
     let gameInfo = this.state.allInfo.map(info => {
+      i++;
       let embed = info.embedValue.substring(info.embedValue.indexOf("src") + 5);
       let embedSrc = embed.substring(0, embed.indexOf('"'));
-      console.log("embedSrc===", embedSrc);
+
       return (
-        <div className="games">
+        <div className="games" key={i}>
           <h3 style={{ color: "white" }}>{info.gameTitle}</h3>
           <br />
           <div>
@@ -36,6 +38,7 @@ class Game extends React.Component {
         </div>
       );
     });
+
     return gameInfo;
   };
 
