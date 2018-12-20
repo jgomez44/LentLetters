@@ -4,7 +4,8 @@ import { address_getAll } from "./server";
 
 class Game extends React.Component {
   state = {
-    allInfo: []
+    allInfo: [],
+    gameInfo: []
   };
 
   componentDidMount = () => {
@@ -13,24 +14,43 @@ class Game extends React.Component {
       .catch(error => console.error("game error===", error));
   };
 
+  createNewGameArray = () => {
+    let gameInfo = this.state.allInfo.map(info => {
+      console.log(info.embedValue.substring(7).split(">")[0]);
+      return info.embedValue.substring(7).split(">")[0];
+    });
+    this.setState({ gameInfo }, this.printGames);
+  };
+
   printGames = () => {
     let gameInfo = this.state.allInfo.map(info => {
       console.log(info.embedValue.substring(7).split(">")[0]);
-      return (
-        <div>
-          <h3>{info.gameTitle}</h3>
-          <br />
+      console.log(
+        "trying this out",
+        info.embedValue
+          .substring(7)
+          .info.embedValue.substring(0, info.embedValue.indexOf("></embed"))
+      );
+
+      for (let i = 0; i < this.state.allInfo.length; i++) {
+        let embed = info.embedValue.substring(7).split(">")[0];
+
+        return (
           <div>
-            <embed {...info.embedValue.substring(7).split(">")[0]} />
-            {/* ) +
+            <h3>{info.gameTitle}</h3>
+            <br />
+            <div>
+              <embed {...this.state.address[i]} />
+              {/* ) +
               info.embedValue.substring(
                 0,
                 info.embedValue.indexOf("></embed>")
               ) +
               "/>"} */}
+            </div>
           </div>
-        </div>
-      );
+        );
+      }
     });
     return gameInfo;
   };
