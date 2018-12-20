@@ -25,8 +25,8 @@ class Game extends React.Component {
           <div>
             <embed
               src={embedSrc}
-              width="600"
-              height="312"
+              width="690"
+              height="402"
               type="application/x-shockwave-flash"
             />
           </div>
@@ -40,7 +40,9 @@ class Game extends React.Component {
     let printGames = this.printGames();
     return (
       <div>
-        <div>{printGames}</div>
+        <center>
+          <div>{printGames}</div>
+        </center>
       </div>
     );
   }
