@@ -15,13 +15,20 @@ class Game extends React.Component {
 
   printGames = () => {
     let gameInfo = this.state.allInfo.map(info => {
-      console.log(info.embedValue.substring(7).split(">")[0]);
+      console.log(
+        info.embedValue
+          .substring(7)
+          .split(">")
+          .join("")
+      );
       return (
         <div>
           <h3>{info.gameTitle}</h3>
           <br />
           <div>
+            {/* <embed {...info.embedValue.substring(7).split(">")[0]} /> */}
             <embed {...info.embedValue.substring(7).split(">")[0]} />
+            <div> {info.embedValue.substring(7).split(">")}</div>
             {/* ) +
               info.embedValue.substring(
                 0,
