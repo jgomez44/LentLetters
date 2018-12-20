@@ -184,14 +184,12 @@ class PersonInfo extends Component {
                 <Label htmlFor="startDate">Start Date:</Label>
                 <br />
                 <DatePicker
-                  // onChangeRaw={this.onChangeRaw}
                   minDate={new Date()}
                   name="sendDate"
                   selected={this.state.sendDate}
                   onChange={this.handleChangeDate}
                   required
                   className="form-control"
-                  // dateFormat="DD-MM-YYYY"
                 />
               </FormGroup>
 

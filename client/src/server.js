@@ -7,6 +7,13 @@ export function address_getAll() {
     .catch(error => console.error("error===", error));
 }
 
+export function getGames() {
+  return axios
+    .get("/api/addresses/games")
+    .then(resp => resp.data)
+    .catch(error => console.error("get games error===", error));
+}
+
 export function addNewPerson(personInfo) {
   return axios.post("/api/addresses", personInfo);
 }
@@ -24,9 +31,3 @@ export function selectPersonInfoById(id) {
 export function updatePerson(id, personInfo) {
   return axios.put("/api/addresses/" + id, personInfo);
 }
-
-// export async function address_getAll_async() {
-//   const resp = await axios.get("/api/addresses");
-//   return resp.data;
-// }
-//make promise callback code read like normal code
