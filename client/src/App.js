@@ -28,8 +28,8 @@ class App extends Component {
                 Add Address
               </NavLink>
               &nbsp;
-              <NavLink to="/game" style={{ color: "white" }}>
-                Game
+              <NavLink to="/games" style={{ color: "white" }}>
+                Games
               </NavLink>
             </Navbar>
             <Switch>
@@ -40,7 +40,7 @@ class App extends Component {
                 path={"/edit/:personId(\\d+)"}
                 component={PersonInfo}
               />
-              <Route exact path={"/game"} component={Game} />
+              <Route exact path={"/games"} component={Game} />
               <Redirect to="/homepage" component={Homepage} />
             </Switch>
           </>
