@@ -43,23 +43,6 @@ class PersonInfo extends Component {
     }
   };
 
-  componentDidUpdate = () => {
-    const { personId } = this.props.match.params;
-    if (personId) {
-      this.setState({
-        firstName: "",
-        lastName: "",
-        street: "",
-        city: "",
-        state: "",
-        zip: "",
-        sendDate: new Date()
-      });
-    } else {
-      return;
-    }
-  };
-
   handleAddNewPerson = () => {
     let { firstName, lastName, street, city, state, zip } = this.state;
     let sendDate = moment(this.state.sendDate);
