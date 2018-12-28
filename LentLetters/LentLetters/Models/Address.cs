@@ -17,8 +17,5 @@ namespace LentLetters.Models
         public DateTime SendDate { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
-
-        //public string GameTitle { get; set; }
-        //public string EmbedValue { get; set; }
     }
 }
