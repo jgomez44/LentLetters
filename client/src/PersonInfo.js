@@ -215,8 +215,11 @@ class PersonInfo extends Component {
             </Form>
           </div>
         )}
-        <audio controls autoplay>
-          <source src="horse.ogg" type="audio/ogg" />
+        <audio controls autoPlay>
+          <source
+            src="https://www.computerhope.com/jargon/m/example.mp3"
+            type="audio/mpeg"
+          />
           <source src="horse.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
