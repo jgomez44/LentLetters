@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addNewPerson, selectPersonInfoById, updatePerson } from "./server";
 import moment from "moment";
-import soundFile from "./CanonInD.mp3";
+import Player from "./Player";
 
 class PersonInfo extends Component {
   state = {
@@ -216,14 +216,15 @@ class PersonInfo extends Component {
             </Form>
           </div>
         )}
-        <audio controls ref="audio_tag">
+        {/* <audio controls ref="audio_tag">
           <source
             url="https://drive.google.com/file/d/1ylNzQb25v6-1xxOL96NKt6cMpCCLWhaM/view"
             type="audio/mpeg"
           />
           <source src="horse.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
-        </audio>
+        </audio> */}
+        <Player />
       </div>
     );
   }
