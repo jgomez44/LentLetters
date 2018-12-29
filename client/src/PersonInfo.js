@@ -17,7 +17,8 @@ class PersonInfo extends Component {
     state: "",
     zip: "",
     sendDate: new Date(),
-    loading: false
+    loading: false,
+    playMusic: false
   };
   componentDidMount = () => {
     const { personId } = this.props.match.params;
@@ -76,6 +77,10 @@ class PersonInfo extends Component {
 
   handleRedirect = () => {
     this.props.history.push("/homepage");
+  };
+
+  handlePlayMusic = () => {
+    this.setState({ playMusic: true });
   };
 
   handleUpdatePerson = () => {
@@ -213,6 +218,14 @@ class PersonInfo extends Component {
               >
                 Return
               </Button>
+
+              <Button
+                type="button"
+                className="btn btn-primary"
+                onClick={this.handlePlayMusic}
+              >
+                Play Music
+              </Button>
             </Form>
           </div>
         )}
@@ -224,7 +237,7 @@ class PersonInfo extends Component {
           <source src="horse.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio> */}
-        <Player />
+        {this.state.playMusic ? <Player /> : null}
       </div>
     );
   }
