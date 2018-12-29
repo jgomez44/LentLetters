@@ -5,15 +5,7 @@ import soundFile from "./CanonInD.mp3";
 
 class Player extends React.Component {
   render() {
-    return (
-      <Sound
-        url={soundFile}
-        playStatus={Sound.status.PLAYING}
-        onLoading={this.handleSongLoading}
-        onPlaying={this.handleSongPlaying}
-        onFinishedPlaying={this.handleSongFinishedPlaying}
-      />
-    ); // Check props in next section
+    return <Sound url={soundFile} playStatus={Sound.status.PLAYING} />;
   }
 }
 
