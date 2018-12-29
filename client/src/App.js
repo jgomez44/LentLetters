@@ -11,6 +11,7 @@ import Homepage from "./Homepage";
 import PersonInfo from "./PersonInfo";
 import Game from "./Game";
 import { Navbar } from "reactstrap";
+import CanonInD from "./CanonInD.mp3";
 
 class App extends Component {
   componentDidMount = () => {};
@@ -41,6 +42,7 @@ class App extends Component {
                 component={PersonInfo}
               />
               <Route exact path={"/games"} component={Game} />
+              <Route exact path={"/CanoninD"} component={CanonInD} />
               <Redirect to="/homepage" component={Homepage} />
             </Switch>
           </>
